@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills — Adebayo Adeyemi</title>
+<meta property="og:title" content="Skills — Adebayo Adeyemi">
+<meta property="og:description" content="Frontend engineering skills: React, Next.js, GSAP, TypeScript, Three.js and more — Adebayo Adeyemi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adebayoadeyemi.vercel.app/skills.html">
+<meta property="og:image" content="https://adebayoadeyemi.vercel.app/og-skills.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Skills — Adebayo Adeyemi">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<style>
+:root{--ease:cubic-bezier(.22,1,.36,1);--spring:cubic-bezier(.34,1.56,.64,1);--dur:.65s;}
+[data-theme="dark"]{
+  --bg:#0A0907;--bg-2:#111008;--bg-3:#181510;--surf:#1C1914;--card:#201D17;
+  --ink:#F0EDE4;--ink-2:#C8C3B4;--ink-3:#7A7568;--muted:#4A4640;
+  --rule:rgba(240,237,228,0.07);--rule-s:rgba(240,237,228,0.13);
+  --moss:#5A8A52;--moss-l:#7DB873;--moss-pale:#1A2E18;
+  --bark:#C4823A;--sage:#8AA882;--sage-pale:#1A2419;
+  --gold:#D4A844;--gold-pale:#2A2110;
+  --nav-bg:rgba(10,9,7,0.55);--nav-border:rgba(240,237,228,0.09);
+  --glass-bg:rgba(20,18,14,0.72);--glass-border:rgba(240,237,228,0.1);
+  --shadow-md:0 8px 32px rgba(0,0,0,.45);--grain-opacity:.045;
+}
+[data-theme="light"]{
+  --bg:#F8F7F2;--bg-2:#F2F1EB;--bg-3:#FDFCF8;--surf:#EEEADE;--card:#FDFCF8;
+  --ink:#0D0D0B;--ink-2:#2A2920;--ink-3:#5A5850;--muted:#9A9890;
+  --rule:rgba(13,13,11,0.08);--rule-s:rgba(13,13,11,0.15);
+  --moss:#3B5E35;--moss-l:#5A8A52;--moss-pale:#E8F0E6;
+  --bark:#7A4A1E;--sage:#8AA882;--sage-pale:#F0F4EE;
+  --gold:#9A7020;--gold-pale:#F5EAD8;
+  --nav-bg:rgba(248,247,242,0.72);--nav-border:rgba(13,13,11,0.1);
+  --glass-bg:rgba(252,251,248,0.76);--glass-border:rgba(13,13,11,0.1);
+  --shadow-md:0 8px 32px rgba(13,13,11,.1);--grain-opacity:.025;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;cursor:none;overflow-x:hidden;transition:background var(--dur) var(--ease),color var(--dur) var(--ease)}
+a{text-decoration:none;color:inherit}
+
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:var(--grain-opacity);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
+
+.cursor{width:8px;height:8px;background:var(--moss-l);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transition:opacity .2s,width .3s var(--spring),height .3s var(--spring)}
+.cursor-ring{width:32px;height:32px;border:1px solid var(--moss-l);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;opacity:.35;transition:width .35s var(--ease),height .35s var(--ease),opacity .2s}
+.cursor.expand{width:48px;height:48px;opacity:.15}.cursor-ring.expand{width:60px;height:60px;opacity:.5}
+@media(pointer:coarse){body{cursor:auto}.cursor,.cursor-ring{display:none}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes barGrow{from{width:0}to{width:var(--w)}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+.d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;background:var(--nav-bg);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--nav-border);transition:background var(--dur) var(--ease),border-color var(--dur) var(--ease),box-shadow .3s}
+nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.2)}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:300;letter-spacing:-.02em}
+.nav-logo em{font-style:italic;color:var(--moss-l)}
+.nav-center{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:40px;padding:5px 6px;backdrop-filter:blur(16px) saturate(160%);box-shadow:0 2px 20px rgba(0,0,0,.15)}
+.nav-pill-track{position:relative;display:flex;align-items:center}
+.nav-glider{position:absolute;border-radius:30px;background:var(--rule-s);transition:left .35s var(--ease),width .35s var(--ease),top .35s var(--ease),height .35s var(--ease);pointer-events:none;z-index:0}
+.nav-link{position:relative;z-index:1;font-size:.74rem;font-weight:500;color:var(--ink-3);letter-spacing:.04em;text-transform:uppercase;padding:.45rem .95rem;border-radius:30px;transition:color .2s;white-space:nowrap}
+.nav-link:hover{color:var(--ink)}.nav-link.on{color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:1rem}
+.theme-toggle{display:flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--ink-3);text-transform:uppercase;cursor:none}
+.toggle-track{width:36px;height:20px;border-radius:10px;background:var(--rule-s);border:1px solid var(--glass-border);position:relative;cursor:none}
+.toggle-thumb{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:var(--moss-l);transition:transform .35s var(--spring),background .4s}
+[data-theme="light"] .toggle-thumb{transform:translateX(16px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:none;padding:4px}
+.hamburger span{width:22px;height:1.5px;background:var(--ink-2);border-radius:2px;transition:transform .3s var(--ease),opacity .2s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;z-index:299;background:var(--glass-bg);backdrop-filter:blur(24px);border-bottom:1px solid var(--glass-border);padding:1.5rem 2rem;flex-direction:column;gap:.5rem;transform:translateY(-12px);opacity:0;transition:transform .35s var(--ease),opacity .35s var(--ease)}
+.mobile-menu.open{opacity:1;transform:translateY(0)}
+.mobile-menu .nav-link{font-size:.9rem;padding:.7rem 0;border-bottom:1px solid var(--rule)}
+@media(max-width:900px){.nav-center{display:none}.hamburger{display:flex}.mobile-menu{display:flex}}
+
+/* PAGE */
+main{padding-top:64px}
+
+/* HERO */
+.skills-hero{
+  min-height:50vh;display:flex;align-items:flex-end;
+  padding:5rem 5vw 4rem;position:relative;overflow:hidden;
+}
+.skills-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 60% at 20% 30%,rgba(90,138,82,.07),transparent);pointer-events:none}
+.sh-inner{position:relative;z-index:1;max-width:900px}
+.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--moss-l);margin-bottom:1.5rem}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--moss-l)}
+.skills-hero h1{font-family:'Fraunces',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:300;line-height:.95;letter-spacing:-.03em}
+.skills-hero h1 em{font-style:italic;color:var(--moss-l)}
+.skills-hero p{margin-top:1.5rem;font-size:1.05rem;color:var(--ink-3);max-width:460px;line-height:1.7}
+
+/* STATS BAND */
+.stats-band{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  background:var(--bg-2);
+}
+.stat-cell{padding:2.5rem 5vw;border-right:1px solid var(--rule);position:relative}
+.stat-cell:last-child{border-right:none}
+.stat-num{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:200;color:var(--ink);line-height:1;letter-spacing:-.04em}
+.stat-num span{color:var(--moss-l)}
+.stat-lbl{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:.4rem}
+
+/* SKILLS MAIN */
+.skills-wrap{padding:5rem 5vw;max-width:1300px;margin:0 auto}
+
+.skills-section{margin-bottom:4.5rem}
+.section-head{
+  display:flex;align-items:baseline;gap:1rem;
+  border-bottom:1px solid var(--rule);padding-bottom:1rem;margin-bottom:2rem;
+}
+.section-head h2{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:300;letter-spacing:-.02em}
+.section-head .count{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);background:var(--rule);padding:.2rem .55rem;border-radius:8px}
+
+/* Skill Bar Cards */
+.skill-bars{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.skill-bar-card{background:var(--card);padding:1.5rem;transition:background .3s}
+.skill-bar-card:hover{background:var(--surf)}
+.skill-bar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.8rem}
+.skill-bar-name{font-size:.88rem;font-weight:500;color:var(--ink)}
+.skill-bar-pct{font-size:.75rem;font-weight:500;color:var(--moss-l);font-family:'Fraunces',serif}
+.skill-bar-track{height:3px;background:var(--rule-s);border-radius:2px;overflow:hidden}
+.skill-bar-fill{height:100%;background:linear-gradient(90deg,var(--moss),var(--moss-l));border-radius:2px;width:0;transition:width 1.1s var(--ease)}
+.skill-bar-fill.animated{width:var(--w)}
+.skill-bar-note{font-size:.72rem;color:var(--ink-3);margin-top:.45rem}
+
+/* Skill Pills */
+.skill-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-pill{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.78rem;font-weight:400;
+  padding:.45rem 1rem;border-radius:24px;
+  border:1px solid var(--rule-s);
+  color:var(--ink-2);background:var(--card);
+  transition:background .25s,border-color .25s,color .25s,transform .25s var(--spring);
+}
+.skill-pill:hover{background:var(--moss-pale);border-color:var(--moss);color:var(--moss-l);transform:translateY(-2px)}
+.skill-pill .dot{width:6px;height:6px;border-radius:50%;background:var(--moss-l);flex-shrink:0}
+.skill-pill.gold .dot{background:var(--gold)}.skill-pill.gold:hover{background:var(--gold-pale);border-color:var(--gold);color:var(--gold)}
+.skill-pill.bark .dot{background:var(--bark)}.skill-pill.bark:hover{background:rgba(196,130,58,.1);border-color:var(--bark);color:var(--bark)}
+
+/* Tool Grid */
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.tool-card{
+  background:var(--card);padding:1.5rem 1rem;
+  display:flex;flex-direction:column;align-items:center;gap:.65rem;
+  transition:background .3s,transform .3s var(--spring);
+  cursor:default;
+}
+.tool-card:hover{background:var(--surf);transform:translateY(-3px)}
+.tool-icon{font-size:1.6rem;line-height:1;animation:floatY 4s ease-in-out infinite}
+.tool-name{font-size:.75rem;font-weight:500;letter-spacing:.02em;color:var(--ink-2);text-align:center}
+.tool-card:nth-child(2n) .tool-icon{animation-delay:-.8s}
+.tool-card:nth-child(3n) .tool-icon{animation-delay:-1.6s}
+.tool-card:nth-child(4n) .tool-icon{animation-delay:-2.4s}
+
+/* LEARNING BAND */
+.learning-band{
+  background:var(--bg-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:4rem 5vw;
+}
+.learn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:14px;overflow:hidden;margin-top:2.5rem}
+.learn-card{background:var(--card);padding:2rem}
+.learn-icon{font-size:1.4rem;margin-bottom:.8rem}
+.learn-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:300;color:var(--ink);margin-bottom:.4rem}
+.learn-desc{font-size:.82rem;color:var(--ink-3);line-height:1.6}
+.learn-bar-wrap{margin-top:1rem;height:2px;background:var(--rule-s);border-radius:1px;overflow:hidden}
+.learn-bar{height:100%;background:linear-gradient(90deg,var(--moss),var(--moss-l));border-radius:1px;width:0;transition:width 1.2s var(--ease)}
+.learn-bar.animated{width:var(--w)}
+.learn-pct{font-size:.68rem;color:var(--moss-l);margin-top:.3rem;font-weight:500}
+
+/* CTA */
+.skills-cta{padding:6rem 5vw;text-align:center;background:var(--moss);position:relative;overflow:hidden}
+.skills-cta::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.04) 39px,rgba(255,255,255,.04) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.04) 39px,rgba(255,255,255,.04) 40px)}
+.skills-cta h2{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;letter-spacing:-.02em;color:#fff;margin-bottom:1rem;position:relative}
+.skills-cta p{font-size:1rem;color:rgba(255,255,255,.7);margin-bottom:2.5rem;position:relative}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-white{padding:.75rem 2rem;border-radius:8px;background:#fff;color:var(--moss);font-size:.82rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:transform .25s var(--ease),box-shadow .25s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.btn-outline-white{padding:.75rem 2rem;border-radius:8px;border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.82rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:border-color .25s,background .25s}
+.btn-outline-white:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.7)}
+
+footer{padding:2rem 5vw;background:var(--bg);border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.75rem;color:var(--ink-3)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-link{font-size:.75rem;color:var(--ink-3);transition:color .2s}
+.footer-link:hover{color:var(--moss-l)}
+
+@media(max-width:900px){.stats-band{grid-template-columns:repeat(2,1fr)}.skill-bars{grid-template-columns:1fr}.learn-grid{grid-template-columns:1fr}.tool-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}}
+@media(max-width:600px){.skills-hero,.skills-wrap,.learning-band,.skills-cta{padding-left:1.5rem;padding-right:1.5rem}.stats-band{grid-template-columns:1fr}.stat-cell{border-right:none;border-bottom:1px solid var(--rule)}}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="nav">
+  <a class="nav-logo" href="index.html">Ade<em>bayo</em></a>
+  <div class="nav-center">
+    <div class="nav-pill-track" id="navTrack">
+      <div class="nav-glider" id="navGlider"></div>
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="work.html">Work</a>
+      <a class="nav-link on" href="skills.html">Skills</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <div class="theme-toggle" id="themeToggle">
+      <span id="themeLabel">Light</span>
+      <div class="toggle-track"><div class="toggle-thumb"></div></div>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a class="nav-link" href="index.html">Home</a>
+  <a class="nav-link" href="about.html">About</a>
+  <a class="nav-link" href="work.html">Work</a>
+  <a class="nav-link on" href="skills.html">Skills</a>
+  <a class="nav-link" href="contact.html">Contact</a>
+</div>
+
+<main>
+
+<section class="skills-hero">
+  <div class="sh-inner">
+    <div class="eyebrow reveal">Capabilities</div>
+    <h1 class="reveal d1">The craft<br>behind the <em>work</em></h1>
+    <p class="reveal d2">Five years of sharpening tools, learning patterns, and pushing the edges of what's possible in the browser.</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stat-cell reveal">
+    <div class="stat-num"><span>18</span></div>
+    <div class="stat-lbl">Technologies</div>
+  </div>
+  <div class="stat-cell reveal d1">
+    <div class="stat-num"><span>5</span>yr</div>
+    <div class="stat-lbl">Experience</div>
+  </div>
+  <div class="stat-cell reveal d2">
+    <div class="stat-num"><span>4</span></div>
+    <div class="stat-lbl">Open Source</div>
+  </div>
+  <div class="stat-cell reveal d3">
+    <div class="stat-num"><span>20</span>+</div>
+    <div class="stat-lbl">Projects Shipped</div>
+  </div>
+</div>
+
+<div class="skills-wrap">
+
+  <!-- Frontend Core -->
+  <div class="skills-section reveal">
+    <div class="section-head">
+      <h2>Frontend Engineering</h2>
+      <span class="count">6 skills</span>
+    </div>
+    <div class="skill-bars">
+      <div class="skill-bar-card">
+        <div class="skill-bar-head"><span class="skill-bar-name">React / Next.js</span><span class="skill-bar-pct">62%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:62%"></div></div>
+        <div class="skill-bar-note">App router, SSR, RSC, streaming, advanced patterns</div>
+      </div>
+      <div class="skill-bar-card">
+        <div class="skill-bar-head"><span class="skill-bar-name">TypeScript</span><span class="skill-bar-pct">60%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:60%"></div></div>
+        <div class="skill-bar-note">Strict mode, generics, utility types, declaration merging</div>
+      </div>
+      <div class="skill-bar-card">
+        <div class="skill-bar-head"><span class="skill-bar-name">CSS / Animation</span><span class="skill-bar-pct">76%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:76%"></div></div>
+        <div class="skill-bar-note">Custom properties, container queries, scroll-driven, view transitions</div>
+      </div>
+      <div class="skill-bar-card">
+        <div class="skill-bar-head"><span class="skill-bar-name">GSAP / ScrollTrigger</span><span class="skill-bar-pct">50%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:50%"></div></div>
+        <div class="skill-bar-note">Complex timelines, morphSVG, SplitText, pin/scrub effects</div>
+      </div>
+      <div class="skill-bar-card">
+        <div class="skill-bar-head"><span class="skill-bar-name">Three.js / WebGL</span><span class="skill-bar-pct">25%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:25%"></div></div>
+        <div class="skill-bar-note">Custom shaders, scene management, post-processing</div>
+      </div>
+      <div class="skill-bar-card">
+        <div class="skill-bar-head"><span class="skill-bar-name">Performance & Core Web Vitals</span><span class="skill-bar-pct">30%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="--w:30%"></div></div>
+        <div class="skill-bar-note">LCP, INP, CLS optimisation, image/font strategies</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UI Design -->
+  <div class="skills-section reveal">
+    <div class="section-head">
+      <h2>UI Design</h2>
+      <span class="count">7 skills</span>
+    </div>
+    <div class="skill-pills">
+      <span class="skill-pill"><span ></span>Design Systems</span>
+      <span class="skill-pill"><span ></span>Token Architecture</span>
+      <span class="skill-pill"><span ></span>Responsive Layout</span>
+      <span class="skill-pill"><span ></span>Motion Design</span>
+      <span class="skill-pill"><span ></span>Accessibility (WCAG 2.2)</span>
+      <span class="skill-pill"><span ></span>Micro-interactions</span>
+      <span class="skill-pill"><span ></span>Dark / Light Theming</span>
+    </div>
+  </div>
+
+  <!-- Backend -->
+  <div class="skills-section reveal">
+    <div class="section-head">
+      <h2>Backend & Tooling</h2>
+      <span class="count">8 skills(Work In Progress expect soon)
+      </span>
+    </div>
+    <div class="skill-pills">
+      <span class="skill-pill gold"><span ></span>Node.js</span>
+      <span class="skill-pill gold"><span ></span>Express / Hono</span>
+      <span class="skill-pill gold"><span ></span>PostgreSQL</span>
+      <span class="skill-pill gold"><span></span>Prisma ORM</span>
+      <span class="skill-pill gold"><span ></span>REST APIs</span>
+      <span class="skill-pill gold"><span ></span>GraphQL</span>
+      <span class="skill-pill gold"><span ></span>Supabase / Firebase</span>
+      <span class="skill-pill gold"><span ></span>Edge Functions</span>
+    </div>
+  </div>
+
+  <!-- Dev Tools -->
+  <div class="skills-section reveal">
+    <div class="section-head">
+      <h2>Dev Tools & Ecosystem</h2>
+      <span class="count">9 skills</span>
+    </div>
+    <div class="skill-pills">
+      <span class="skill-pill bark"><span></span>Git / GitHub</span>
+      <span class="skill-pill bark"><span></span>Vite / Webpack</span>
+      <span class="skill-pill bark"><span ></span>Tailwind CSS</span>
+      <span class="skill-pill bark"><span ></span>Vitest / Jest</span>
+      <span class="skill-pill bark"><span ></span>Vercel / Netlify</span>
+    </div>
+  </div>
+
+  <!-- Tools / Software -->
+  <div class="skills-section reveal">
+    <div class="section-head">
+      <h2>Software I Work In</h2>
+      <span class="count">10 tools</span>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">React</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">Next.js</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">Vite</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">GSAP</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">TypeScript</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">GitHub</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">VS Code</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">Tailwind</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">Node.js</div></div>
+      <div class="tool-card"><div class="tool-icon"></div><div class="tool-name">Three.js</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- LEARNING -->
+<section class="learning-band">
+  <div class="section-label reveal" style="display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--moss-l)"><span style="display:block;width:28px;height:1px;background:var(--moss-l)"></span>Currently Learning</div>
+  <div class="learn-grid">
+    <div class="learn-card reveal">
+      <div class="learn-icon"></div>
+      <div class="learn-title">AI Integration</div>
+      <p class="learn-desc">Building AI-powered interfaces with the Vercel AI SDK, streaming UIs, and RAG pipelines.</p>
+      <div class="learn-bar-wrap"><div class="learn-bar" style="--w:30%"></div></div>
+      <div class="learn-pct">30</div>
+    </div>
+    <div class="learn-card reveal d1">
+      <div class="learn-icon"></div>
+      <div class="learn-title">WebGPU / WGSL</div>
+      <p class="learn-desc">Exploring the next generation of graphics in the browser — compute shaders and real-time rendering.</p>
+      <div class="learn-bar-wrap"><div class="learn-bar" style="--w:30%"></div></div>
+      <div class="learn-pct">30%</div>
+    </div>
+    <div class="learn-card reveal d2">
+      <div class="learn-icon"></div>
+      <div class="learn-title">Rust for WASM</div>
+      <p class="learn-desc">Using Rust compiled to WebAssembly for performance-critical browser tasks.</p>
+      <div class="learn-bar-wrap"><div class="learn-bar" style="--w:20%"></div></div>
+      <div class="learn-pct">20%</div>
+    </div>
+  </div>
+</section>
+
+<section class="skills-cta">
+  <h2>Want to collaborate?</h2>
+  <p>I bring both the design eye and the engineering depth.</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-white">Get In Touch</a>
+    <a href="work.html" class="btn-outline-white">See My Work</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span class="footer-copy">© 2025 Adebayo Adeyemi</span>
+  <div class="footer-links">
+    <a href="#" class="footer-link">GitHub</a>
+    <a href="#" class="footer-link">LinkedIn</a>
+    <a href="mailto:adebayoadeyemi@gmail.com" class="footer-link">Email</a>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx-4}px,${my-4}px)`;});
+(function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.transform=`translate(${rx-16}px,${ry-16}px)`;requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.tool-card,.skill-pill').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('expand');ring.classList.add('expand')});
+  el.addEventListener('mouseleave',()=>{cur.classList.remove('expand');ring.classList.remove('expand')});
+});
+
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+
+const html=document.documentElement;
+const lbl=document.getElementById('themeLabel');
+const saved=localStorage.getItem('theme')||'dark';
+html.setAttribute('data-theme',saved);lbl.textContent=saved==='dark'?'Light':'Dark';
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const t=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',t);localStorage.setItem('theme',t);lbl.textContent=t==='dark'?'Light':'Dark';
+});
+
+const ham=document.getElementById('hamburger'),mob=document.getElementById('mobileMenu');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open')});
+
+(function(){
+  const track=document.getElementById('navTrack'),glider=document.getElementById('navGlider');
+  const links=track.querySelectorAll('.nav-link');
+  const active=track.querySelector('.nav-link.on')||links[0];
+  function setG(el){glider.style.left=el.offsetLeft+'px';glider.style.width=el.offsetWidth+'px';glider.style.height=el.offsetHeight+'px';glider.style.top=el.offsetTop+'px';}
+  setG(active);
+  links.forEach(l=>{l.addEventListener('mouseenter',()=>setG(l));l.addEventListener('mouseleave',()=>setG(track.querySelector('.nav-link.on')||links[0]));});
+})();
+
+// Reveal + animate bars
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      // animate skill bars inside
+      e.target.querySelectorAll('.skill-bar-fill,.learn-bar').forEach(bar=>{
+        setTimeout(()=>bar.classList.add('animated'),100);
+      });
+    }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Also observe section wrappers to trigger bar animations
+document.querySelectorAll('.skills-section,.learn-card').forEach(sec=>{
+  const secObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.skill-bar-fill,.learn-bar').forEach(bar=>{
+          setTimeout(()=>bar.classList.add('animated'),200);
+        });
+        secObs.unobserve(e.target);
+      }
+    });
+  },{threshold:.15});
+  secObs.observe(sec);
+});
+</script>
+</body>
+</html>
