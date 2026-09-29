@@ -430,6 +430,42 @@ footer{
   .proj-view-btn{transform:translateY(0)}
 }
 
+
+/* Mobile project links: make the live destination the obvious tap target */
+@media (max-width: 700px) {
+  .proj-img {
+    position: relative;
+  }
+
+  .proj-img-overlay {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    z-index: 10;
+  }
+
+  .proj-view-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    min-height: 52px;
+    padding: 14px 24px;
+    border-radius: 999px;
+    transform: none !important;
+    pointer-events: auto !important;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    z-index: 20;
+  }
+
+  /* The live button should win over the surrounding project card link. */
+  .proj-img-overlay .proj-view-btn {
+    cursor: pointer;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -748,6 +784,22 @@ filterBtns.forEach(btn=>{
     });
   });
 });
+
+// Mobile-safe View Live navigation.
+// Prevents the parent project card/link from stealing the tap.
+document.querySelectorAll('.proj-view-btn[href]').forEach((liveBtn) => {
+  liveBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+    const url = liveBtn.getAttribute('href');
+    if (url && url !== '#') {
+      window.location.href = url;
+    }
+  }, true);
+});
+
 </script>
 </body>
 </html>
